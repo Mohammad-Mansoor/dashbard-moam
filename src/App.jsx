@@ -1,12 +1,11 @@
 import "./App.css";
-import DashboardLayout from "./layouts/DashboardLayout";
+
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <>
-      <DashboardLayout>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      </DashboardLayout>
+      <AppRoutes />
     </>
   );
 }
