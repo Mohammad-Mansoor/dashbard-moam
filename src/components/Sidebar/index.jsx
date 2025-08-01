@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { FaTruck, FaList } from "react-icons/fa";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { useRole } from "../context/RoleContext.jsx";
+import { useRole } from "../../context/RoleContext.jsx";
+import { IoClose } from "react-icons/io5";
 
 export default function Sidebar({ sidebarOpen, onClose }) {
   const { role } = useRole();
@@ -15,7 +16,7 @@ export default function Sidebar({ sidebarOpen, onClose }) {
       setIsMobile(window.innerWidth < 768);
     };
 
-    handleResize(); // run once on mount
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -32,36 +33,35 @@ export default function Sidebar({ sidebarOpen, onClose }) {
         ${sidebarOpen || !isMobile ? "translate-x-0" : "-translate-x-full"}
         ${collapsed && !isMobile ? "w-20" : "w-64"}`}
     >
-      {/* Header */}
-      <div className="relative flex items-center justify-between p-4 border-b">
-        <h2 className="font-bold text-lg">
-          {collapsed && !isMobile ? "Logo" : "Moam Logistics"}
+      <div className="relative flex items-center justify-between py-[23px] px-2 border-b">
+        <h2 className="font-bold text-lg text-primary">
+          {collapsed && !isMobile ? "MOAM" : "MOAM LOGISTICS"}
         </h2>
 
-        {/* Close icon (X) on mobile OR collapse icon on md+ */}
         {isMobile ? (
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
             aria-label="Close sidebar"
           >
-            ✕
+            <IoClose size={24} />
           </button>
         ) : (
-          <button
-            onClick={() => setCollapsed((prev) => !prev)}
-            className="text-gray-500 hover:text-gray-700"
-            aria-label="Collapse/Expand sidebar"
-          >
-            ✕
-          </button>
+          !collapsed && (
+            <button
+              onClick={() => setCollapsed((prev) => !prev)}
+              className="text-gray-500 hover:text-gray-700"
+              aria-label="Collapse/Expand sidebar"
+            >
+              <IoClose size={24} />
+            </button>
+          )
         )}
 
-        {/* Expand icon when collapsed (only on md+) */}
         {!isMobile && collapsed && (
           <button
             onClick={() => setCollapsed(false)}
-            className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-gray-200 p-1 rounded-full shadow-md"
+            className="absolute -right-5 top-1/2 transform hover:text-blue-500 transition-all duration-300 -translate-y-1/2 bg-gray-200 p-1 rounded-full shadow-md"
             aria-label="Expand sidebar"
           >
             <IoIosArrowDroprightCircle size={20} />
@@ -69,7 +69,6 @@ export default function Sidebar({ sidebarOpen, onClose }) {
         )}
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
         {navItems.map(({ label, icon }) => (
           <a
