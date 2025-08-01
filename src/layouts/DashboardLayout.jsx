@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { GiHamburgerMenu } from "react-icons/gi";
+import AppHeader from "../components/AppHeader";
 
 export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -9,13 +9,11 @@ export default function DashboardLayout() {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* Sidebar */}
       <Sidebar
         sidebarOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
 
-      {/* Overlay for small screens */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"
@@ -23,23 +21,11 @@ export default function DashboardLayout() {
         />
       )}
 
-      {/* Main content */}
       <div className="flex-1 flex flex-col">
-        {/* Top bar */}
-        <div className="p-4 shadow-md bg-white flex items-center">
-          {/* Hamburger menu */}
-          <button
-            className="md:hidden text-2xl"
-            onClick={() => setSidebarOpen(true)}
-          >
-            <GiHamburgerMenu />
-          </button>
-          <h1 className="ml-4 text-xl font-semibold">Dashboard</h1>
-        </div>
+        <AppHeader setSidebarOpen={setSidebarOpen} />
 
-        {/* Page content */}
         <div className="p-4">
-          <p>Your main content goes here...</p>
+          <p>pages content </p>
         </div>
       </div>
     </div>

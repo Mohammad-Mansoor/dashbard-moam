@@ -6,6 +6,11 @@ export const RoleProvider = ({ children }) => {
   const [role, setRole] = useState(
     () => localStorage.getItem("role") || "driver"
   );
+  const roles = [
+    { value: "driver", label: "Driver" },
+    { value: "shipper", label: "Shipper" },
+    { value: "admin", label: "Admin" },
+  ];
 
   const switchRole = (newRole) => {
     setRole(newRole);
@@ -13,7 +18,7 @@ export const RoleProvider = ({ children }) => {
   };
 
   return (
-    <RoleContext.Provider value={{ role, switchRole }}>
+    <RoleContext.Provider value={{ role, roles, switchRole }}>
       {children}
     </RoleContext.Provider>
   );
