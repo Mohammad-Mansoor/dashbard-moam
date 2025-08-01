@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRole } from "../../context/RoleContext";
-import Select from "../Sidebar/Select";
+import Select from "../Select.jsx";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 function AppHeader({ setSidebarOpen }) {
@@ -25,7 +25,7 @@ function AppHeader({ setSidebarOpen }) {
         >
           <GiHamburgerMenu />
         </button>
-        <h1 className="ml-4 text-xl font-semibold">{`${role} Dashboard`}</h1>
+        <h1 className="ml-4 text-xl font-semibold hidden md:block">{`${role} Dashboard`}</h1>
       </div>
       <div className="">
         <Select

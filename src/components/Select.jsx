@@ -40,7 +40,7 @@ const Select = ({ options, selected, onChange, label }) => {
 
   return (
     <div
-      className="w-60 relative"
+      className="w-40 relative"
       ref={ref}
       tabIndex={0}
       onKeyDown={handleKeyDown}

@@ -24,7 +24,7 @@ const mockTrips = [
     cargoType: "Textiles",
     status: "Delivered",
     driverName: "Ahmad",
-    proofOfDelivery: "/images/pod-3.jpg", // mock image path
+    proofOfDelivery: null,
   },
   {
     id: "4",
@@ -42,7 +42,7 @@ const mockTrips = [
     cargoType: "Construction Materials",
     status: "Delivered",
     driverName: "Zabi",
-    proofOfDelivery: "/images/pod-5.jpg",
+    proofOfDelivery: null,
   },
 ];
 
